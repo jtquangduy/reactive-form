@@ -25,7 +25,7 @@ export class SignupComponent {
         validators: [Validators.required, Validators.minLength(6)],
       }),
       confirmPassword: new FormControl('', {
-        validators: [Validators.required],
+        validators: [Validators.required, Validators.minLength(6)],
       }),
     }),
     firstName: new FormControl('', {
@@ -65,6 +65,11 @@ export class SignupComponent {
   });
 
   onSubmit() {
+    if(this.form.invalid) {
+    console.log('INVALID FORM');
+    return;
+    }
+
     console.log(this.form);
   }
 
